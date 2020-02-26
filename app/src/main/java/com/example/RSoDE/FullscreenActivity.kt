@@ -59,7 +59,7 @@ class FullscreenActivity : AppCompatActivity() {
         // Upon interacting with UI controls, delay any scheduled hide()
         // operations to prevent the jarring behavior of controls going away
         // while interacting with the UI.
-        dummy_button.setOnTouchListener(mDelayHideTouchListener)
+        start_button.setOnTouchListener(mDelayHideTouchListener)
     }
 
     override fun onPostCreate(savedInstanceState: Bundle?) {
@@ -73,7 +73,7 @@ class FullscreenActivity : AppCompatActivity() {
 
     private fun toggle() {
         if (mVisible) {
-            hide()
+            //hide()
         } else {
             show()
         }
@@ -82,7 +82,7 @@ class FullscreenActivity : AppCompatActivity() {
     private fun hide() {
         // Hide UI first
         supportActionBar?.hide()
-        fullscreen_content_controls.visibility = View.GONE
+        //fullscreen_content_controls.visibility = View.GONE
         mVisible = false
 
         // Schedule a runnable to remove the status and navigation bar after a delay
