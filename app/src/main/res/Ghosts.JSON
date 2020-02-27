@@ -1,0 +1,17 @@
+{
+  "indexNumber": {
+    "name": "name goes here",
+    "desc": "Description of personality here",
+    "prefRespType": "insert preferred response type here",
+    "dialogOpts": {
+      "charm": [],
+      "stern": [],
+      "rspct": []
+    },
+    "charDialogLines": {
+      "opening": "insert opening line here",
+      "success": [],
+      "failure": []
+    }
+  }
+}
