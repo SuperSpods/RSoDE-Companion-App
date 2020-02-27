@@ -4,14 +4,10 @@
     "desc": "Description of personality here",
     "prefRespType": "insert preferred response type here",
     "dialogOpts": {
-      "charm": [],
-      "stern": [],
-      "rspct": []
+      "charm": [{"opt": "Option goes here", "resp": "Response goes here"}],
+      "stern": [{"opt": "Option goes here", "resp": "Response goes here"}],
+      "rspct": [{"opt": "Option goes here", "resp": "Response goes here"}]
     },
-    "charDialogLines": {
-      "opening": "insert opening line here",
-      "success": [],
-      "failure": []
-    }
+    "openingLine": "insert opening line here"
   }
 }
