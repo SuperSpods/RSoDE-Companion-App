@@ -1,0 +1,36 @@
+During manufacturing:
+    Assign each token a number (1-12)
+    Store number on each token using specific naming scheme
+
+On game started:
+    Randomly select ghosts to associate with each token
+    load each selected ghost into RAM, including associated images, audio files, and any other assets
+    show idle screen
+    
+During idle state:
+    Play idle animation that highlights location of NFC antennae on device
+    wait until RFID tag detected
+    
+When RFID tag detected:
+    Read data off of the tag
+    IF tag contains a valid ghost token ID:
+        Begin dialogue sequence
+    Else:
+        If tag contains valid board action space ID:
+            Load random card
+            wait until closed either by swiping off or tapping an X buton
+        else:
+            Display an in-character error message
+
+When dialogue begins:
+    Load dialogue information from JSON file based on ghost associated with token at beginning of game
+    If information drop-down opened:
+        Display extra info from character JSON
+    If Dialogue option selected:
+        display response
+        If optionType == character.preferredResponseType:
+            show success splash
+        else:
+            show failure splash
+    Return to idle
+    
