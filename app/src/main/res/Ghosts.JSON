@@ -9,5 +9,16 @@
       "stern": [{"opt": "I’m lookin’ to try and help you, bud, if you’d set aside that harsh tone of yours, maybe we could actually get somewhere.", "resp": " Haha! Haven’t seen anyone with that much power in their voice in a long time. You’ve got a backbone!  For your information, I know there's no point in staying here in this dusty field, I just got too sentimental is all. I'll be on my way now, take care,  partner!"},{"opt": ") Would you take a second to listen? You are dead, and You need to move on from this desolate place.", "resp": "Desolate? Bold of you to insult my Farm to my face like that! You’re in luck though, I like boldness. Just give me a minute to say my goodbyes."},{"opt": "You need to be on your way. You are not alive, what do you have to gain by staying here?", "resp": "You seem to at least know how to hold yourself! How could I possibly ignore such a strong voice? I’ll be gone soon enough, don’t worry your little head ‘bout that. Just give me a minute to say farewell."}]
     },
     "openingLine": "Howdy, I guess. The name’s Mark. Ya seem to be lost. These parts can get a little… rough. Not the best place to find yourself nowadays. Not like I care, ‘s your fault anyway. Don't know ‘bout you, but where I’m from, we value strength, be it emotional or otherwise. And so after the bandits done got me durin’ cropping season, I’ve just been wantin’ revenge. A silly idea, I know, but knowin’ its dumb doesn’t stop me from feelin’ it. If you are lookin’ for trouble from the likes of me, you won’t be findin’ it. But if you’re lookin’ for your name goin’ on a gravestone you’re not far from it partner."
+  },
+  "indexNumber": {
+    "name": "name goes here",
+    "desc": "Description of personality here",
+    "prefRespType": "insert preferred response type here",
+    "dialogOpts": {
+      "charm": [{"opt": "Option goes here", "resp": "Response goes here"}],
+      "stern": [{"opt": "Option goes here", "resp": "Response goes here"}],
+      "rspct": [{"opt": "Option goes here", "resp": "Response goes here"}]
+    },
+    "openingLine": "insert opening line here"
   }
 }
