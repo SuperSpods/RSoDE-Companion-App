@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.os.Handler
 import android.view.View
 import kotlinx.android.synthetic.main.activity_fullscreen.*
-//TODO: convert this into a title screen
 //TODO: Determine how to transition into another activity
 /**
  * An example full-screen activity that shows and hides the system UI (i.e.
