@@ -5,7 +5,8 @@ import android.os.Bundle
 import android.os.Handler
 import android.view.View
 import kotlinx.android.synthetic.main.activity_fullscreen.*
-
+//TODO: convert this into a title screen
+//TODO: Determine how to transition into another activity
 /**
  * An example full-screen activity that shows and hides the system UI (i.e.
  * status bar and navigation/system bar) with user interaction.
@@ -73,7 +74,7 @@ class FullscreenActivity : AppCompatActivity() {
 
     private fun toggle() {
         if (mVisible) {
-            //hide()
+            hide()
         } else {
             show()
         }
@@ -116,7 +117,7 @@ class FullscreenActivity : AppCompatActivity() {
          * Whether or not the system UI should be auto-hidden after
          * [AUTO_HIDE_DELAY_MILLIS] milliseconds.
          */
-        private val AUTO_HIDE = true
+        private val AUTO_HIDE = false
 
         /**
          * If [AUTO_HIDE] is set, the number of milliseconds to wait after
