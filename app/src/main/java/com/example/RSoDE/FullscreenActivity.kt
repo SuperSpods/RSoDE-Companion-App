@@ -1,10 +1,13 @@
 package com.example.RSoDE
 
-import androidx.appcompat.app.AppCompatActivity
+import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_fullscreen.*
+
+
 /**
  * An example full-screen activity that shows and hides the system UI (i.e.
  * status bar and navigation/system bar) with user interaction.
@@ -38,6 +41,8 @@ class FullscreenActivity : AppCompatActivity() {
      * while interacting with activity UI.
      */
     private val mDelayHideTouchListener = View.OnTouchListener { _, _ ->
+        val myIntent = Intent(this, MainActivity::class.java)
+        startActivity(myIntent)
         if (AUTO_HIDE) {
             delayedHide(AUTO_HIDE_DELAY_MILLIS)
         }

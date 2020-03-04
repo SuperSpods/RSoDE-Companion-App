@@ -12,12 +12,14 @@ import android.os.Handler
 import android.view.View
 import androidx.fragment.app.DialogFragment
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlin.random.Random
 
 //TODO: design idle screen
-//TODO: Set up randomness
 //TODO: add JSON parser
 //TODO: set up JSON handler
 //TODO: Lay out code for dialogue system
+var TestVariable: String = "Bruh moment"
+var ghosts = listOf(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 class NFCErrorDialog: DialogFragment(){
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         return activity?.let {
@@ -33,7 +35,6 @@ class NFCErrorDialog: DialogFragment(){
             builder.create()
         } ?: throw IllegalStateException("Activity cannot be null")
     }
-
 }
 class MainActivity : AppCompatActivity() {
     private val mHideHandler = Handler()
@@ -87,12 +88,14 @@ class MainActivity : AppCompatActivity() {
                     val payloadString = String(payload, charset("US-ASCII"))
                     println(payloadString.substring(1..12))
                     if (payloadString.substring(1..12) == "enGhostToken") {
-                        val ghostIndexNum = payloadString.substring(13 until payloadString.length)
+                        val tagIndexNum = payloadString.substring(13 until payloadString.length).toInt()
+                        val ghostIndexNum = ghosts[tagIndexNum]
                         println("Load ghost #$ghostIndexNum")
                         dialogueMainBox.visibility = View.VISIBLE
                     } else {
                         if (payloadString.substring(1..12) == "enBoardSpace") {
-                            println("Load random card")
+                            val card = Random.nextInt(0, 100)
+                            println("Load card $card")
                         }else{
                             val fragment = NFCErrorDialog()
                             fragment.show(supportFragmentManager, "nfcError")
@@ -100,13 +103,22 @@ class MainActivity : AppCompatActivity() {
                     }
                 }
             }
+        }else{
+            TestVariable = "Yeet Skeet"
+            randomize()
         }
+        println(TestVariable)
         fullscreen_content.setText("Dialogue sequence here")
         // Set up the user interaction to manually show or hide the system UI.
         fullscreen_content.setOnClickListener { toggle() }
         // Upon interacting with UI controls, delay any scheduled hide()
         // operations to prevent the jarring behavior of controls going away
         // while interacting with the UI.
+    }
+
+    private fun randomize(){
+        ghosts = List(12) { Random.nextInt(0, 24)}
+        println(ghosts)
     }
     override fun onPostCreate(savedInstanceState: Bundle?) {
         super.onPostCreate(savedInstanceState)
