@@ -1,5 +1,9 @@
 package com.example.RSoDE
 
+import android.content.Intent
+import android.nfc.NdefMessage
+import android.nfc.NdefRecord
+import android.nfc.NfcAdapter
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
@@ -10,7 +14,7 @@ import kotlinx.android.synthetic.main.activity_main.*
  * An example full-screen activity that shows and hides the system UI (i.e.
  * status bar and navigation/system bar) with user interaction.
  */
-class main : AppCompatActivity() {
+class MainActivity : AppCompatActivity() {
     private val mHideHandler = Handler()
     private val mHidePart2Runnable = Runnable {
         // Delayed removal of status and navigation bar
@@ -47,15 +51,25 @@ class main : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         setContentView(R.layout.activity_main)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-
         mVisible = true
-
+        println("Activity created")
+        print("Intent: ")
+        println(intent.action)
+        if  (intent.action == NfcAdapter.ACTION_NDEF_DISCOVERED) {
+            intent.getParcelableArrayExtra(NfcAdapter.EXTRA_NDEF_MESSAGES)?.also { rawMessages ->
+                val messages: List<NdefMessage> = rawMessages.map { it as NdefMessage }
+                println(messages)
+                for (message: android.nfc.NdefMessage in messages){
+                    val record: List<NdefRecord> = message.records.asList()
+                    println(record)
+                }
+            }
+        }
+        fullscreen_content.setText("Dialogue sequence here")
         // Set up the user interaction to manually show or hide the system UI.
         fullscreen_content.setOnClickListener { toggle() }
-
         // Upon interacting with UI controls, delay any scheduled hide()
         // operations to prevent the jarring behavior of controls going away
         // while interacting with the UI.
