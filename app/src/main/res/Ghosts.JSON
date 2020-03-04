@@ -11,13 +11,13 @@
     "openingLine": "Howdy, I guess. The name’s Mark. Ya seem to be lost. These parts can get a little… rough. Not the best place to find yourself nowadays. Not like I care, ‘s your fault anyway. Don't know ‘bout you, but where I’m from, we value strength, be it emotional or otherwise. And so after the bandits done got me durin’ cropping season, I’ve just been wantin’ revenge. A silly idea, I know, but knowin’ its dumb doesn’t stop me from feelin’ it. If you are lookin’ for trouble from the likes of me, you won’t be findin’ it. But if you’re lookin’ for your name goin’ on a gravestone you’re not far from it partner."
   },
   "1": {
-    "name": "name goes here",
-    "desc": "Description of personality here",
-    "prefRespType": "insert preferred response type here",
+    "name": "Sophia Bushell",
+    "desc": "She is a nurse that fell ill and died in her sleep. She’s well known for her hardheaded-ness and she doesn’t take too kindly to stubborn patients, yet she is the most skilled physician this town’s got!\n",
+    "prefRespType": "rspct",
     "dialogOpts": {
-      "charm": [{"opt": "Option goes here", "resp": "Response goes here"}],
-      "stern": [{"opt": "Option goes here", "resp": "Response goes here"}],
-      "rspct": [{"opt": "Option goes here", "resp": "Response goes here"}]
+      "charm": [{"opt": "", "resp": "Response goes here"},{"opt": "Option goes here", "resp": "Response goes here"},{"opt": "Option goes here", "resp": "Response goes here"}],
+      "stern": [{"opt": "Option goes here", "resp": "Response goes here"},{"opt": "Option goes here", "resp": "Response goes here"},{"opt": "Option goes here", "resp": "Response goes here"}],
+      "rspct": [{"opt": "Madam, if I may be so forward, I’m sure there will be someone out there to help, yet, I understand how frustrating it can be. If you need anything at all, we’ll be here.", "resp": " I appreciate the offer, it's been a while since I’ve seen someone even slightly concerned about what happened, and how the doctors feel about all of this! Everyone just brushes it off and tells me to move on, but this IS my livelihood! Maybe I can try and find some peace in knowing that me and you think alike..."},{"opt": "Hello there miss, If you need anything, i am always here to assist you. Would it be improper of me to ask if you can give me any details?", "resp": "Sure I can. Thank you for asking, not many ever actually want to tackle  the nitty-gritty of the situation. But to be completely honest, the details don’t really matter anymore.  I am mostly worried about whether or not anyone else is alive, but from the looks of it, I think that it is too late. Thanks for your concern. With someone like you around, I don't really have to worry about the safety of this place."},{"opt": "Option goes here", "resp": "Response goes here"}]
     },
     "openingLine": "insert opening line here"
   },
@@ -32,4 +32,5 @@
     },
     "openingLine": "insert opening line here"
   }
+
 }
