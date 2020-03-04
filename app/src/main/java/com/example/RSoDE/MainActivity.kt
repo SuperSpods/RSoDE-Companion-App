@@ -18,7 +18,7 @@ import kotlin.random.Random
 //TODO: add JSON parser
 //TODO: set up JSON handler
 //TODO: Lay out code for dialogue system
-var TestVariable: String = "Bruh moment"
+var startedProperly: Boolean = false
 var ghosts = listOf(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 class NFCErrorDialog: DialogFragment(){
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
@@ -76,17 +76,17 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         mVisible = true
-        println("Activity created")
-        print("Intent: ")
-        println(intent.action)
         if (intent.action == NfcAdapter.ACTION_NDEF_DISCOVERED) {
+            if (!startedProperly){
+                randomize()
+                startedProperly = true
+            }
             intent.getParcelableArrayExtra(NfcAdapter.EXTRA_NDEF_MESSAGES)?.also { rawMessages ->
                 val messages: List<NdefMessage> = rawMessages.map { it as NdefMessage }
                 for (message: NdefMessage in messages) {
                     val record: List<NdefRecord> = message.records.asList()
                     val payload: ByteArray = record[0].payload
                     val payloadString = String(payload, charset("US-ASCII"))
-                    println(payloadString.substring(1..12))
                     if (payloadString.substring(1..12) == "enGhostToken") {
                         val tagIndexNum = payloadString.substring(13 until payloadString.length).toInt()
                         val ghostIndexNum = ghosts[tagIndexNum]
@@ -104,10 +104,9 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }else{
-            TestVariable = "Yeet Skeet"
+            startedProperly = true
             randomize()
         }
-        println(TestVariable)
         fullscreen_content.setText("Dialogue sequence here")
         // Set up the user interaction to manually show or hide the system UI.
         fullscreen_content.setOnClickListener { toggle() }
