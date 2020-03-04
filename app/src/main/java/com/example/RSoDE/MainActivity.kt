@@ -1,6 +1,8 @@
 package com.example.RSoDE
 
-import android.content.Intent
+import android.app.AlertDialog
+import android.app.Dialog
+import android.content.DialogInterface
 import android.nfc.NdefMessage
 import android.nfc.NdefRecord
 import android.nfc.NfcAdapter
@@ -8,12 +10,31 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.view.View
+import androidx.fragment.app.DialogFragment
 import kotlinx.android.synthetic.main.activity_main.*
+
 //TODO: design idle screen
-/**
- * An example full-screen activity that shows and hides the system UI (i.e.
- * status bar and navigation/system bar) with user interaction.
- */
+//TODO: Set up randomness
+//TODO: add JSON parser
+//TODO: set up JSON handler
+//TODO: Lay out code for dialogue system
+class NFCErrorDialog: DialogFragment(){
+    override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
+        return activity?.let {
+            // Use the Builder class for convenient dialog construction
+            val builder = AlertDialog.Builder(it)
+            builder.setMessage("That ain't no valid token or board space!")
+                .setTitle("NFC Error")
+                .setPositiveButton("Yee Haw!",
+                    DialogInterface.OnClickListener { dialog, id ->
+
+                    })
+            // Create the AlertDialog object and return it
+            builder.create()
+        } ?: throw IllegalStateException("Activity cannot be null")
+    }
+
+}
 class MainActivity : AppCompatActivity() {
     private val mHideHandler = Handler()
     private val mHidePart2Runnable = Runnable {
@@ -33,7 +54,7 @@ class MainActivity : AppCompatActivity() {
     private val mShowPart2Runnable = Runnable {
         // Delayed display of UI elements
         supportActionBar?.show()
-        fullscreen_content_controls.visibility = View.VISIBLE
+        dialogueOpts.visibility = View.VISIBLE
     }
     private var mVisible: Boolean = false
     private val mHideRunnable = Runnable { hide() }
@@ -57,13 +78,26 @@ class MainActivity : AppCompatActivity() {
         println("Activity created")
         print("Intent: ")
         println(intent.action)
-        if  (intent.action == NfcAdapter.ACTION_NDEF_DISCOVERED) {
+        if (intent.action == NfcAdapter.ACTION_NDEF_DISCOVERED) {
             intent.getParcelableArrayExtra(NfcAdapter.EXTRA_NDEF_MESSAGES)?.also { rawMessages ->
                 val messages: List<NdefMessage> = rawMessages.map { it as NdefMessage }
-                println(messages)
-                for (message: android.nfc.NdefMessage in messages){
+                for (message: NdefMessage in messages) {
                     val record: List<NdefRecord> = message.records.asList()
-                    println(record)
+                    val payload: ByteArray = record[0].payload
+                    val payloadString = String(payload, charset("US-ASCII"))
+                    println(payloadString.substring(1..12))
+                    if (payloadString.substring(1..12) == "enGhostToken") {
+                        val ghostIndexNum = payloadString.substring(13 until payloadString.length)
+                        println("Load ghost #$ghostIndexNum")
+                        dialogueMainBox.visibility = View.VISIBLE
+                    } else {
+                        if (payloadString.substring(1..12) == "enBoardSpace") {
+                            println("Load random card")
+                        }else{
+                            val fragment = NFCErrorDialog()
+                            fragment.show(supportFragmentManager, "nfcError")
+                        }
+                    }
                 }
             }
         }
@@ -74,7 +108,6 @@ class MainActivity : AppCompatActivity() {
         // operations to prevent the jarring behavior of controls going away
         // while interacting with the UI.
     }
-
     override fun onPostCreate(savedInstanceState: Bundle?) {
         super.onPostCreate(savedInstanceState)
 
@@ -95,7 +128,7 @@ class MainActivity : AppCompatActivity() {
     private fun hide() {
         // Hide UI first
         supportActionBar?.hide()
-        fullscreen_content_controls.visibility = View.GONE
+        fullscreen_content.visibility = View.GONE
         mVisible = false
 
         // Schedule a runnable to remove the status and navigation bar after a delay
@@ -129,7 +162,7 @@ class MainActivity : AppCompatActivity() {
          * Whether or not the system UI should be auto-hidden after
          * [AUTO_HIDE_DELAY_MILLIS] milliseconds.
          */
-        private val AUTO_HIDE = false
+        private val AUTO_HIDE = true
 
         /**
          * If [AUTO_HIDE] is set, the number of milliseconds to wait after
