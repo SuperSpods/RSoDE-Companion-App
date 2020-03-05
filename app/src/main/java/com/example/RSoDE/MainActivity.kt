@@ -2,29 +2,30 @@ package com.example.RSoDE
 
 import android.app.AlertDialog
 import android.app.Dialog
+import android.content.Context
 import android.content.DialogInterface
-import android.content.res.AssetManager
 import android.nfc.NdefMessage
 import android.nfc.NdefRecord
 import android.nfc.NfcAdapter
 import android.os.Bundle
 import android.os.Handler
+import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.DialogFragment
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_main.view.*
 import org.json.JSONArray
+import org.json.JSONObject
+import java.io.IOException
+import java.io.InputStream
 import kotlin.random.Random
 
 //TODO: design idle screen
-//TODO: add JSON parser
-//TODO: FIND OUT HOW THE FUCKING HELL YOU LOAD A GODDAMN MOTHERFUCKING ASSET
 //TODO: Lay out code for dialogue system
-
 var startedProperly: Boolean = false
 var ghosts = listOf(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-var ghostJSON:JSONArray = JSONArray()
+var ghostJSON:JSONObject = JSONObject()
 class NFCErrorDialog: DialogFragment(){
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         return activity?.let {
@@ -120,10 +121,28 @@ class MainActivity : AppCompatActivity() {
         // operations to prevent the jarring behavior of controls going away
         // while interacting with the UI.
     }
+
     private fun init(){
+        fun getAssetJsonData(context: Context): JSONObject {
+            var json: String? = null
+            json = try {
+                val `is`: InputStream = context.getAssets().open("ghosts.json")
+                val size: Int = `is`.available()
+                val buffer = ByteArray(size)
+                `is`.read(buffer)
+                `is`.close()
+                String(buffer, charset("UTF-8"))
+            } catch (ex: IOException) {
+                ex.printStackTrace()
+                return JSONObject()
+            }
+            Log.e("data", json)
+            return JSONObject(json)
+        }
+        ghostJSON = getAssetJsonData(applicationContext)
         ghosts = List(12) { Random.nextInt(0, 24)}
         println(ghosts)
-
+        println(ghostJSON)
     }
     override fun onPostCreate(savedInstanceState: Bundle?) {
         super.onPostCreate(savedInstanceState)
