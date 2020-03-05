@@ -91,11 +91,13 @@ class MainActivity : AppCompatActivity() {
                         val tagIndexNum = payloadString.substring(13 until payloadString.length).toInt()
                         val ghostIndexNum = ghosts[tagIndexNum]
                         println("Load ghost #$ghostIndexNum")
+
                         dialogueMainBox.visibility = View.VISIBLE
                     } else {
                         if (payloadString.substring(1..12) == "enBoardSpace") {
                             val card = Random.nextInt(0, 100)
                             println("Load card $card")
+                            fullscreen_content.setText("Card #$card")
                         }else{
                             val fragment = NFCErrorDialog()
                             fragment.show(supportFragmentManager, "nfcError")
