@@ -15,14 +15,13 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.DialogFragment
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_main.view.*
-import org.json.JSONArray
 import org.json.JSONObject
 import java.io.IOException
 import java.io.InputStream
 import kotlin.random.Random
 
 //TODO: design idle screen
-//TODO: Lay out code for dialogue system
+//TODO: Lay out code for card system
 var startedProperly: Boolean = false
 var ghosts = listOf(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 var ghostJSON:JSONObject = JSONObject()
@@ -42,6 +41,48 @@ class NFCErrorDialog: DialogFragment(){
         } ?: throw IllegalStateException("Activity cannot be null")
     }
 }
+
+class infoBox(description: String) : DialogFragment(){
+    val desc = description
+    override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
+        return activity?.let {
+            // Use the Builder class for convenient dialog construction
+            val builder = AlertDialog.Builder(it)
+            builder.setMessage(desc)
+                .setTitle("Information")
+                .setPositiveButton("ok",
+                    DialogInterface.OnClickListener { dialog, id ->
+
+                    })
+            // Create the AlertDialog object and return it
+            builder.create()
+        } ?: throw IllegalStateException("Activity cannot be null")
+    }
+}
+
+class winLossMessage(success: Boolean) : DialogFragment(){
+    val wl = success
+    override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
+        return activity?.let {
+            // Use the Builder class for convenient dialog construction
+            val builder = AlertDialog.Builder(it)
+            if (wl) {
+                builder.setMessage("Success, gain 1 point")
+                    .setTitle("Win message")
+            }else{
+                builder.setMessage("Failure, lose 1 point")
+                    .setTitle("Loss message")
+            }
+                .setPositiveButton("ok",
+                    DialogInterface.OnClickListener { dialog, id ->
+
+                    })
+            // Create the AlertDialog object and return it
+            builder.create()
+        } ?: throw IllegalStateException("Activity cannot be null")
+    }
+}
+
 class MainActivity : AppCompatActivity() {
     private val mHideHandler = Handler()
     private val mHidePart2Runnable = Runnable {
@@ -70,12 +111,6 @@ class MainActivity : AppCompatActivity() {
      * system UI. This is to prevent the jarring behavior of controls going away
      * while interacting with activity UI.
      */
-    private val mDelayHideTouchListener = View.OnTouchListener { _, _ ->
-        if (AUTO_HIDE) {
-            delayedHide(AUTO_HIDE_DELAY_MILLIS)
-        }
-        false
-    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -93,11 +128,49 @@ class MainActivity : AppCompatActivity() {
                     val payload: ByteArray = record[0].payload
                     val payloadString = String(payload, charset("US-ASCII"))
                     if (payloadString.substring(1..12) == "enGhostToken") {
+                        //Extract index number from tag data
                         val tagIndexNum = payloadString.substring(13 until payloadString.length).toInt()
+                        //Get ghost assigned to tag index
                         val ghostIndexNum = ghosts[tagIndexNum]
                         println("Load ghost #$ghostIndexNum")
-                        dialogueMainBox.topBar.nameBox.text = "Ghost #$ghostIndexNum"
+                        //Load ghost from JSON data
+                        val ghost: JSONObject = ghostJSON.getJSONObject(ghostIndexNum.toString())
+                        println(ghost)
+                        //Plug JSON into dialogue UI
+                        nameBox.text = ghost["name"].toString()
+                        val dialogueOpts = ghost.getJSONObject("dialogOpts")
+                        val charm = dialogueOpts.getJSONArray("charm").getJSONObject(Random.nextInt(0, dialogueOpts.getJSONArray("charm").length()))
+                        val stern = dialogueOpts.getJSONArray("stern").getJSONObject(Random.nextInt(0, dialogueOpts.getJSONArray("stern").length()))
+                        val respect = dialogueOpts.getJSONArray("rspct").getJSONObject(Random.nextInt(0, dialogueOpts.getJSONArray("rspct").length()))
+                        dialogue1.text = charm.getString("opt")
+                        dialogue1.setOnTouchListener {v, event ->
+                            val fragment = winLossMessage(ghost.getString("prefRespType") == "charm")
+                            fragment.show(supportFragmentManager, "winlossmessage")
+                            dialogueMainBox.visibility = View.INVISIBLE
+                            true
+                        }
+                        dialogue2.text = stern.getString("opt")
+                        dialogue2.setOnTouchListener {v, event ->
+                            val fragment = winLossMessage(ghost.getString("prefRespType") == "stern")
+                            fragment.show(supportFragmentManager, "winlossmessage")
+                            dialogueMainBox.visibility = View.INVISIBLE
+                            true
+                        }
+                        dialogue3.text = respect.getString("opt")
+                        dialogue3.setOnTouchListener {v, event ->
+                            val fragment = winLossMessage(ghost.getString("prefRespType") == "rspct")
+                            fragment.show(supportFragmentManager, "winlossmessage")
+                            dialogueMainBox.visibility = View.INVISIBLE
+                            true
+                        }
+
                         dialogueMainBox.visibility = View.VISIBLE
+                        topBar.info.setOnTouchListener { v, event ->
+                            val fragment = infoBox(ghost.getString("desc"))
+                            fragment.show(supportFragmentManager, "description")
+                            true
+                        }
+
                     } else {
                         if (payloadString.substring(1..12) == "enBoardSpace") {
                             val card = Random.nextInt(0, 100)
@@ -126,7 +199,7 @@ class MainActivity : AppCompatActivity() {
         fun getAssetJsonData(context: Context): JSONObject {
             var json: String? = null
             json = try {
-                val `is`: InputStream = context.getAssets().open("ghosts.json")
+                val `is`: InputStream = context.assets.open("ghosts.json")
                 val size: Int = `is`.available()
                 val buffer = ByteArray(size)
                 `is`.read(buffer)
@@ -140,7 +213,7 @@ class MainActivity : AppCompatActivity() {
             return JSONObject(json)
         }
         ghostJSON = getAssetJsonData(applicationContext)
-        ghosts = List(12) { Random.nextInt(0, 24)}
+        ghosts = List(12) { Random.nextInt(0, ghostJSON.length())}
         println(ghosts)
         println(ghostJSON)
     }
