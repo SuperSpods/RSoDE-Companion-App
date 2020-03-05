@@ -3,7 +3,6 @@ package com.example.RSoDE
 import android.app.AlertDialog
 import android.app.Dialog
 import android.content.Context
-import android.content.DialogInterface
 import android.nfc.NdefMessage
 import android.nfc.NdefRecord
 import android.nfc.NfcAdapter
@@ -15,17 +14,19 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.DialogFragment
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_main.view.*
+import org.json.JSONArray
 import org.json.JSONObject
 import java.io.IOException
 import java.io.InputStream
-import java.net.CacheResponse
 import kotlin.random.Random
 
 //TODO: design idle screen
-//TODO: Lay out code for card system
+//TODO: make things pretty
+//TODO: Finish UI
 var startedProperly: Boolean = false
 var ghosts = listOf(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-var ghostJSON:JSONObject = JSONObject()
+var ghostJSON: JSONObject = JSONObject()
+var cardsJSON: JSONArray = JSONArray()
 class NFCErrorDialog: DialogFragment(){
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         return activity?.let {
@@ -48,6 +49,21 @@ class infoBox(description: String) : DialogFragment(){
             val builder = AlertDialog.Builder(it)
             builder.setMessage(desc)
                 .setTitle("Information")
+                .setPositiveButton("ok") { dialog, id -> }
+            // Create the AlertDialog object and return it
+            builder.create()
+        } ?: throw IllegalStateException("Activity cannot be null")
+    }
+}
+
+class cardBox(description: String) : DialogFragment(){
+    val desc = description
+    override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
+        return activity?.let {
+            // Use the Builder class for convenient dialog construction
+            val builder = AlertDialog.Builder(it)
+            builder.setMessage(desc)
+                .setTitle("Card")
                 .setPositiveButton("ok") { dialog, id -> }
             // Create the AlertDialog object and return it
             builder.create()
@@ -166,9 +182,10 @@ class MainActivity : AppCompatActivity() {
                     } else {
                         if (payloadString.substring(1..12) == "enBoardSpace") {
                             //Handle cards
-                            val card = Random.nextInt(0, 100)
-                            fullscreen_content.text = "Card #$card"
-                            fullscreen_content.visibility = View.VISIBLE
+                            val card = Random.nextInt(0, cardsJSON.length())
+                            val cardText = cardsJSON[card].toString()
+                            val fragment = cardBox(cardText)
+                            fragment.show(supportFragmentManager, "card")
                         }else{
                             //If NFC tag isn't part of the game, complain to user about it.
                             val fragment = NFCErrorDialog()
@@ -181,7 +198,6 @@ class MainActivity : AppCompatActivity() {
             startedProperly = true
             init()
         }
-        fullscreen_content.text = "Dialogue sequence here"
         // Set up the user interaction to manually show or hide the system UI.
         fullscreen_content.setOnClickListener { toggle() }
         // Upon interacting with UI controls, delay any scheduled hide()
@@ -189,9 +205,12 @@ class MainActivity : AppCompatActivity() {
         // while interacting with the UI.
     }
 
+    @Suppress("ASSIGNED_BUT_NEVER_ACCESSED_VARIABLE",
+        "NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS"
+    )
     private fun init(){
         //Get JSON for ghosts
-        fun getAssetJsonData(context: Context): JSONObject {
+        fun getGhostJsonData(context: Context): JSONObject {
             var json: String? = null
             json = try {
                 val `is`: InputStream = context.assets.open("ghosts.json")
@@ -207,11 +226,28 @@ class MainActivity : AppCompatActivity() {
             Log.e("data", json)
             return JSONObject(json)
         }
-        ghostJSON = getAssetJsonData(applicationContext)
+        fun getCardJsonData(context: Context): JSONObject {
+            var json: String? = null
+            json = try {
+                val `is`: InputStream = context.assets.open("cards.json")
+                val size: Int = `is`.available()
+                val buffer = ByteArray(size)
+                `is`.read(buffer)
+                `is`.close()
+                String(buffer, charset("UTF-8"))
+            } catch (ex: IOException) {
+                ex.printStackTrace()
+                return JSONObject()
+            }
+            Log.e("data", json)
+            return JSONObject(json)
+        }
+
+        ghostJSON = getGhostJsonData(applicationContext)
+        cardsJSON = getCardJsonData(applicationContext).getJSONArray("cards")
         //randomize ghost associated with each token
         ghosts = List(12) { Random.nextInt(0, ghostJSON.length())}
-        println(ghosts)
-        println(ghostJSON)
+
     }
     override fun onPostCreate(savedInstanceState: Bundle?) {
         super.onPostCreate(savedInstanceState)
@@ -219,7 +255,7 @@ class MainActivity : AppCompatActivity() {
         // Trigger the initial hide() shortly after the activity has been
         // created, to briefly hint to the user that UI controls
         // are available.
-        delayedHide(100)
+        100.delayedHide()
     }
 
     private fun toggle() {
@@ -254,12 +290,12 @@ class MainActivity : AppCompatActivity() {
     }
 
     /**
-     * Schedules a call to hide() in [delayMillis], canceling any
+     * Schedules a call to hide() in [this@delayedHide], canceling any
      * previously scheduled calls.
      */
-    private fun delayedHide(delayMillis: Int) {
+    private fun Int.delayedHide() {
         mHideHandler.removeCallbacks(mHideRunnable)
-        mHideHandler.postDelayed(mHideRunnable, delayMillis.toLong())
+        mHideHandler.postDelayed(mHideRunnable, toLong())
     }
 
     companion object {
