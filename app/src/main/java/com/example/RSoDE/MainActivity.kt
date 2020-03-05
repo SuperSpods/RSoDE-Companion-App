@@ -3,6 +3,8 @@ package com.example.RSoDE
 import android.app.AlertDialog
 import android.app.Dialog
 import android.content.DialogInterface
+import android.content.res.AssetFileDescriptor
+import android.content.res.Resources
 import android.nfc.NdefMessage
 import android.nfc.NdefRecord
 import android.nfc.NfcAdapter
@@ -12,8 +14,10 @@ import android.os.Handler
 import android.view.View
 import androidx.fragment.app.DialogFragment
 import kotlinx.android.synthetic.main.activity_main.*
+import org.json.JSONArray
+import org.json.JSONObject
+import java.io.File
 import kotlin.random.Random
-
 //TODO: design idle screen
 //TODO: add JSON parser
 //TODO: set up JSON handler
