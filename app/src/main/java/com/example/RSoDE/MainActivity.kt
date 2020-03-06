@@ -211,7 +211,7 @@ class MainActivity : AppCompatActivity() {
     private fun init(){
         //Get JSON for ghosts
         fun getGhostJsonData(context: Context): JSONObject {
-            var json: String? = null
+            val json: String
             json = try {
                 val `is`: InputStream = context.assets.open("ghosts.json")
                 val size: Int = `is`.available()
@@ -227,7 +227,7 @@ class MainActivity : AppCompatActivity() {
             return JSONObject(json)
         }
         fun getCardJsonData(context: Context): JSONObject {
-            var json: String? = null
+            val json: String
             json = try {
                 val `is`: InputStream = context.assets.open("cards.json")
                 val size: Int = `is`.available()
