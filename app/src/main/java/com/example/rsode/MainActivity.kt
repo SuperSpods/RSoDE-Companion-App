@@ -1,4 +1,4 @@
-package com.example.RSoDE
+package com.example.rsode
 
 import android.app.AlertDialog
 import android.app.Dialog
@@ -34,46 +34,46 @@ class NFCErrorDialog: DialogFragment(){
             val builder = AlertDialog.Builder(it)
             builder.setMessage("That ain't no valid token or board space!")
                 .setTitle("NFC Error")
-                .setPositiveButton("Yee Haw!") { dialog, id -> }
+                .setPositiveButton("Yee Haw!") { dialog, id -> println("$dialog, $id")}
             // Create the AlertDialog object and return it
             builder.create()
         } ?: throw IllegalStateException("Activity cannot be null")
     }
 }
 
-class infoBox(description: String) : DialogFragment(){
-    val desc = description
+class InfoBox(description: String) : DialogFragment(){
+    private val desc = description
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         return activity?.let {
             // Use the Builder class for convenient dialog construction
             val builder = AlertDialog.Builder(it)
             builder.setMessage(desc)
                 .setTitle("Information")
-                .setPositiveButton("ok") { dialog, id -> }
+                .setPositiveButton("ok") { dialog, id -> println("$dialog, $id")}
             // Create the AlertDialog object and return it
             builder.create()
         } ?: throw IllegalStateException("Activity cannot be null")
     }
 }
 
-class cardBox(description: String) : DialogFragment(){
-    val desc = description
+class CardBox(text: String) : DialogFragment(){
+    private val cardText = text
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         return activity?.let {
             // Use the Builder class for convenient dialog construction
             val builder = AlertDialog.Builder(it)
-            builder.setMessage(desc)
+            builder.setMessage(cardText)
                 .setTitle("Card")
-                .setPositiveButton("ok") { dialog, id -> }
+                .setPositiveButton("ok") { dialog, id -> println("$dialog, $id")}
             // Create the AlertDialog object and return it
             builder.create()
         } ?: throw IllegalStateException("Activity cannot be null")
     }
 }
 
-class winLossMessage(success: Boolean, response: String) : DialogFragment(){
-    val wl = success
-    val resp = response
+class WinLossMessage(success: Boolean, response: String) : DialogFragment(){
+    private val wl = success
+    private val resp = response
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         return activity?.let {
             // Use the Builder class for convenient dialog construction
@@ -85,7 +85,7 @@ class winLossMessage(success: Boolean, response: String) : DialogFragment(){
                 builder.setMessage("$resp \nFailure, lose 1 point")
                     .setTitle("Loss message")
             }
-                .setPositiveButton("ok") { dialog, id -> }
+                .setPositiveButton("ok") { dialog, id -> println("$dialog, $id")}
             // Create the AlertDialog object and return it
             builder.create()
         } ?: throw IllegalStateException("Activity cannot be null")
@@ -152,29 +152,33 @@ class MainActivity : AppCompatActivity() {
                         val respect = dialogueOpts.getJSONArray("rspct").getJSONObject(Random.nextInt(0, dialogueOpts.getJSONArray("rspct").length()))
                         dialogue1.text = charm.getString("opt")
                         dialogue1.setOnTouchListener {v, event ->
-                            val fragment = winLossMessage(ghost.getString("prefRespType") == "charm", charm.getString("resp"))
+                            println("$v, $event")
+                            val fragment = WinLossMessage(ghost.getString("prefRespType") == "charm", charm.getString("resp"))
                             fragment.show(supportFragmentManager, "winlossmessage")
                             dialogueMainBox.visibility = View.INVISIBLE
                             true
                         }
                         dialogue2.text = stern.getString("opt")
                         dialogue2.setOnTouchListener {v, event ->
-                            val fragment = winLossMessage(ghost.getString("prefRespType") == "stern", stern.getString("resp"))
+                            println("$v, $event")
+                            val fragment = WinLossMessage(ghost.getString("prefRespType") == "stern", stern.getString("resp"))
                             fragment.show(supportFragmentManager, "winlossmessage")
                             dialogueMainBox.visibility = View.INVISIBLE
                             true
                         }
                         dialogue3.text = respect.getString("opt")
                         dialogue3.setOnTouchListener {v, event ->
-                            val fragment = winLossMessage(ghost.getString("prefRespType") == "rspct", respect.getString("resp"))
+                            println("$v, $event")
+                            val fragment = WinLossMessage(ghost.getString("prefRespType") == "rspct", respect.getString("resp"))
                             fragment.show(supportFragmentManager, "winlossmessage")
                             dialogueMainBox.visibility = View.INVISIBLE
                             true
                         }
 
                         dialogueMainBox.visibility = View.VISIBLE
-                        topBar.info.setOnTouchListener { v, event ->
-                            val fragment = infoBox(ghost.getString("desc"))
+                        topBar.info.setOnTouchListener {  v, event ->
+                            println("$v, $event")
+                            val fragment = InfoBox(ghost.getString("desc"))
                             fragment.show(supportFragmentManager, "description")
                             true
                         }
@@ -184,7 +188,7 @@ class MainActivity : AppCompatActivity() {
                             //Handle cards
                             val card = Random.nextInt(0, cardsJSON.length())
                             val cardText = cardsJSON[card].toString()
-                            val fragment = cardBox(cardText)
+                            val fragment = CardBox(cardText)
                             fragment.show(supportFragmentManager, "card")
                         }else{
                             //If NFC tag isn't part of the game, complain to user about it.
@@ -303,18 +307,18 @@ class MainActivity : AppCompatActivity() {
          * Whether or not the system UI should be auto-hidden after
          * [AUTO_HIDE_DELAY_MILLIS] milliseconds.
          */
-        private val AUTO_HIDE = true
+        private const val AUTO_HIDE = true
 
         /**
          * If [AUTO_HIDE] is set, the number of milliseconds to wait after
          * user interaction before hiding the system UI.
          */
-        private val AUTO_HIDE_DELAY_MILLIS = 3000
+        private const val AUTO_HIDE_DELAY_MILLIS = 3000
 
         /**
          * Some older devices needs a small delay between UI widget updates
          * and a change of the status and navigation bar.
          */
-        private val UI_ANIMATION_DELAY = 300
+        private const val UI_ANIMATION_DELAY = 300
     }
 }

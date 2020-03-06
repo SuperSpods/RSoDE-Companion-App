@@ -1,4 +1,4 @@
-package com.example.RSoDE
+package com.example.rsode
 
 //TODO: Design backend
 private fun main(){

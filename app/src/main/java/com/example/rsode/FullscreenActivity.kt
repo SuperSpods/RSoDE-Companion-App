@@ -1,4 +1,4 @@
-package com.example.RSoDE
+package com.example.rsode
 
 import android.content.Intent
 import android.os.Bundle
