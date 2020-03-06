@@ -69,7 +69,7 @@ class FullscreenActivity : AppCompatActivity() {
         // Trigger the initial hide() shortly after the activity has been
         // created, to briefly hint to the user that UI controls
         // are available.
-        delayedHide(100)
+        100.delayedHide()
     }
 
     private fun toggle() {
@@ -104,12 +104,12 @@ class FullscreenActivity : AppCompatActivity() {
     }
 
     /**
-     * Schedules a call to hide() in [delayMillis], canceling any
+     * Schedules a call to hide() in [this@delayedHide], canceling any
      * previously scheduled calls.
      */
-    private fun delayedHide(delayMillis: Int) {
+    private fun Int.delayedHide() {
         mHideHandler.removeCallbacks(mHideRunnable)
-        mHideHandler.postDelayed(mHideRunnable, delayMillis.toLong())
+        mHideHandler.postDelayed(mHideRunnable, toLong())
     }
 
     companion object {
