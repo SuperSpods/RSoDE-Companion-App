@@ -208,7 +208,9 @@ class MainActivity : AppCompatActivity() {
         // operations to prevent the jarring behavior of controls going away
         // while interacting with the UI.
     }
-
+    private fun idle(){
+        IdleScreenBox.visibility = View.VISIBLE
+    }
     @Suppress("ASSIGNED_BUT_NEVER_ACCESSED_VARIABLE",
         "NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS"
     )
