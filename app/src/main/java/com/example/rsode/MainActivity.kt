@@ -156,6 +156,7 @@ class MainActivity : AppCompatActivity() {
                             val fragment = WinLossMessage(ghost.getString("prefRespType") == "charm", charm.getString("resp"))
                             fragment.show(supportFragmentManager, "winlossmessage")
                             dialogueMainBox.visibility = View.INVISIBLE
+                            idle()
                             true
                         }
                         dialogue2.text = stern.getString("opt")
@@ -164,6 +165,7 @@ class MainActivity : AppCompatActivity() {
                             val fragment = WinLossMessage(ghost.getString("prefRespType") == "stern", stern.getString("resp"))
                             fragment.show(supportFragmentManager, "winlossmessage")
                             dialogueMainBox.visibility = View.INVISIBLE
+                            idle()
                             true
                         }
                         dialogue3.text = respect.getString("opt")
@@ -172,6 +174,7 @@ class MainActivity : AppCompatActivity() {
                             val fragment = WinLossMessage(ghost.getString("prefRespType") == "rspct", respect.getString("resp"))
                             fragment.show(supportFragmentManager, "winlossmessage")
                             dialogueMainBox.visibility = View.INVISIBLE
+                            idle()
                             true
                         }
 
@@ -185,15 +188,19 @@ class MainActivity : AppCompatActivity() {
 
                     } else {
                         if (payloadString.substring(1..12) == "enBoardSpace") {
+                            dialogueMainBox.visibility = View.INVISIBLE
                             //Handle cards
                             val card = Random.nextInt(0, cardsJSON.length())
                             val cardText = cardsJSON[card].toString()
                             val fragment = CardBox(cardText)
                             fragment.show(supportFragmentManager, "card")
+                            idle()
                         }else{
+                            dialogueMainBox.visibility = View.INVISIBLE
                             //If NFC tag isn't part of the game, complain to user about it.
                             val fragment = NFCErrorDialog()
                             fragment.show(supportFragmentManager, "nfcError")
+                            idle()
                         }
                     }
                 }
@@ -201,6 +208,7 @@ class MainActivity : AppCompatActivity() {
         }else{
             startedProperly = true
             init()
+            idle()
         }
         // Set up the user interaction to manually show or hide the system UI.
         fullscreen_content.setOnClickListener { toggle() }
@@ -209,6 +217,7 @@ class MainActivity : AppCompatActivity() {
         // while interacting with the UI.
     }
     private fun idle(){
+        dialogueMainBox.visibility = View.INVISIBLE
         IdleScreenBox.visibility = View.VISIBLE
     }
     @Suppress("ASSIGNED_BUT_NEVER_ACCESSED_VARIABLE",

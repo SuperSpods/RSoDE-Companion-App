@@ -88,15 +88,15 @@
         android:id="@+id/IdleScreenBox"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:visibility="visible">
+        android:visibility="invisible">
 
         <ImageView
-            android:id="@+id/imageView"
-            android:translationX="-250dp"
-            android:translationY="135dp"
+            android:id="@+id/idleNfcCircle"
             android:layout_width="500dp"
             android:layout_height="500dp"
             android:contentDescription="NFC circle marker"
+            android:translationX="-250dp"
+            android:translationY="135dp"
             app:srcCompat="@drawable/nfc_circle" />
     </FrameLayout>
 
