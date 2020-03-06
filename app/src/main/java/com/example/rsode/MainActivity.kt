@@ -146,6 +146,7 @@ class MainActivity : AppCompatActivity() {
                         println(ghost)
                         //Plug JSON into dialogue UI
                         nameBox.text = ghost["name"].toString()
+                        opening.text = ghost.getString("openingLine")
                         val dialogueOpts = ghost.getJSONObject("dialogOpts")
                         val charm = dialogueOpts.getJSONArray("charm").getJSONObject(Random.nextInt(0, dialogueOpts.getJSONArray("charm").length()))
                         val stern = dialogueOpts.getJSONArray("stern").getJSONObject(Random.nextInt(0, dialogueOpts.getJSONArray("stern").length()))
