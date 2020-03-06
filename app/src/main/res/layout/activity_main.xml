@@ -41,7 +41,6 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="charName"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
             <Button
@@ -49,7 +48,7 @@
                 style="@android:style/Widget.Button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="info" />
+                android:text="@string/infoButton" />
         </LinearLayout>
 
         <LinearLayout
@@ -63,22 +62,19 @@
                 android:id="@+id/dialogue1"
                 style="@android:style/Widget.Button"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Option 1" />
+                android:layout_height="wrap_content"/>
 
             <Button
                 android:id="@+id/dialogue2"
                 style="@android:style/Widget.Button"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Option 2" />
+                android:layout_height="wrap_content"/>
 
             <Button
                 android:id="@+id/dialogue3"
                 style="@android:style/Widget.Button"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Option 3" />
+                android:layout_height="wrap_content"/>
 
         </LinearLayout>
     </FrameLayout>

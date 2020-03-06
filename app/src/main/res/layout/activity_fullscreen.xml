@@ -15,7 +15,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:scaleType="centerCrop"
-        app:srcCompat="@drawable/background" />
+        app:srcCompat="@drawable/background"
+        android:contentDescription="@string/bkgrnd"/>
 
     <!-- This FrameLayout insets its children based on system windows using
          android:fitsSystemWindows. -->
@@ -25,6 +26,7 @@
         android:fitsSystemWindows="false">
 
         <ImageView
+            android:contentDescription="@string/Title"
             android:id="@+id/imageView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -46,19 +48,19 @@
 
             <Button
                 android:id="@+id/start_button"
-                style="@style/TextAppearance.AppCompat.Button"
-                android:layout_margin="5dp"
+                style="@android:style/Widget.Button"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_margin="5dp"
                 android:layout_weight="1"
                 android:text="@string/start_button" />
 
             <Button
                 android:id="@+id/settings_button"
-                style="@style/TextAppearance.AppCompat.Button"
-                android:layout_margin="5dp"
+                style="@android:style/Widget.Button"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_margin="5dp"
                 android:layout_weight="1"
                 android:text="@string/settings_button" />
 

@@ -43,9 +43,6 @@ class FullscreenActivity : AppCompatActivity() {
     private val mDelayHideTouchListener = View.OnTouchListener { _, _ ->
         val myIntent = Intent(this, MainActivity::class.java)
         startActivity(myIntent)
-        if (AUTO_HIDE) {
-            delayedHide(AUTO_HIDE_DELAY_MILLIS)
-        }
         false
     }
 
