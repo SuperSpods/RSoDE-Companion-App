@@ -101,11 +101,9 @@
 
         <ImageView
             android:id="@+id/idleNfcCircle"
-            android:layout_width="500dp"
-            android:layout_height="500dp"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
             android:contentDescription="NFC circle marker"
-            android:translationX="-250dp"
-            android:translationY="135dp"
             app:srcCompat="@drawable/nfc_circle" />
     </FrameLayout>
 
