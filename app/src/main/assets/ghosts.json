@@ -4,33 +4,357 @@
     "desc": "He was a Farmer who got shot by a gang of bandits during his harvest. He’s a short-tempered man, but something tells me you’ll be able to get through to him with a little bit of… advanced persuasion.",
     "prefRespType": "stern",
     "dialogOpts": {
-      "charm": [{"opt": " Why would you even give those fools the time of day? A tough, fierce man such as yourself should never stay hung up on a gang of addle-headed bandits!", "resp": "I need no flattery, generous as it may be. Now go on, be on your way. I have no time for small talk."},{"opt": "Well, I am certain of one thing. They sound like complete cowards! Truly just a bunch of fools...", "resp": " Insultin’ them is not going to do much ‘bout the problem. Now leave me be, I don't have time for games!"},{"opt": "Won’t you listen for a spell? I am confident that you can get through this, you seem to be a capable man.", "resp": " I was a capable man, before this whole mess. You don't have to remind me of how little I can do to fix this!"}],
-      "rspct": [{"opt": "Pardon my rudeness sir, but would you please hear me out? I can help you find peace if you so wish it…", "resp": " I wish you would just go ahead and move along buckaroo. I didn’t ask for any of your “Kindness”. Go on, git!"},{"opt": "Hello good sir, might I ask what is troubling you? I could be of assistance, if that doesn’t bother you.", "resp": " Oh dear sweet father in the sky, I haven’t met a wanderer with less fight in ‘em since the last drought. Are you tryin’ to frustrate me? Is that funny to you?"},{"opt": "Would it be rude of me to ask why you are still stuck here? Do you require any help to get out of this place?", "resp": " I ain’t need no help, I am a capable man you know! I stuck by my field since death did us part, why, were basically married! Uhhh, don’t take that outta context, ya hear?"}],
-      "stern": [{"opt": "I’m lookin’ to try and help you, bud, if you’d set aside that harsh tone of yours, maybe we could actually get somewhere.", "resp": " Haha! Haven’t seen anyone with that much power in their voice in a long time. You’ve got a backbone!  For your information, I know there's no point in staying here in this dusty field, I just got too sentimental is all. I'll be on my way now, take care,  partner!"},{"opt": ") Would you take a second to listen? You are dead, and You need to move on from this desolate place.", "resp": "Desolate? Bold of you to insult my Farm to my face like that! You’re in luck though, I like boldness. Just give me a minute to say my goodbyes."},{"opt": "You need to be on your way. You are not alive, what do you have to gain by staying here?", "resp": "You seem to at least know how to hold yourself! How could I possibly ignore such a strong voice? I’ll be gone soon enough, don’t worry your little head ‘bout that. Just give me a minute to say farewell."}]
+      "charm": [
+        {"opt": " Why would you even give those fools the time of day? A tough, fierce man such as yourself should never stay hung up on a gang of addle-headed bandits!", "resp": "I need no flattery, generous as it may be. Now go on, be on your way. I have no time for small talk."},
+        {"opt": "Well, I am certain of one thing. They sound like complete cowards! Truly just a bunch of fools...", "resp": " Insultin’ them is not going to do much ‘bout the problem. Now leave me be, I don't have time for games!"},
+        {"opt": "Won’t you listen for a spell? I am confident that you can get through this, you seem to be a capable man.", "resp": " I was a capable man, before this whole mess. You don't have to remind me of how little I can do to fix this!"}
+      ],
+      "rspct": [
+        {"opt": "Pardon my rudeness sir, but would you please hear me out? I can help you find peace if you so wish it…", "resp": " I wish you would just go ahead and move along buckaroo. I didn’t ask for any of your “Kindness”. Go on, git!"},
+        {"opt": "Hello good sir, might I ask what is troubling you? I could be of assistance, if that doesn’t bother you.", "resp": " Oh dear sweet father in the sky, I haven’t met a wanderer with less fight in ‘em since the last drought. Are you tryin’ to frustrate me? Is that funny to you?"},
+        {"opt": "Would it be rude of me to ask why you are still stuck here? Do you require any help to get out of this place?", "resp": " I ain’t need no help, I am a capable man you know! I stuck by my field since death did us part, why, were basically married! Uhhh, don’t take that outta context, ya hear?"}
+      ],
+      "stern": [
+        {"opt": "I’m lookin’ to try and help you, bud, if you’d set aside that harsh tone of yours, maybe we could actually get somewhere.", "resp": " Haha! Haven’t seen anyone with that much power in their voice in a long time. You’ve got a backbone!  For your information, I know there's no point in staying here in this dusty field, I just got too sentimental is all. I'll be on my way now, take care,  partner!"},
+        {"opt": ") Would you take a second to listen? You are dead, and You need to move on from this desolate place.", "resp": "Desolate? Bold of you to insult my Farm to my face like that! You’re in luck though, I like boldness. Just give me a minute to say my goodbyes."},
+        {"opt": "You need to be on your way. You are not alive, what do you have to gain by staying here?", "resp": "You seem to at least know how to hold yourself! How could I possibly ignore such a strong voice? I’ll be gone soon enough, don’t worry your little head ‘bout that. Just give me a minute to say farewell."}
+      ]
     },
     "openingLine": "Howdy, I guess. The name’s Mark. Ya seem to be lost. These parts can get a little… rough. Not the best place to find yourself nowadays. Not like I care, ‘s your fault anyway. Don't know ‘bout you, but where I’m from, we value strength, be it emotional or otherwise. And so after the bandits done got me durin’ cropping season, I’ve just been wantin’ revenge. A silly idea, I know, but knowin’ its dumb doesn’t stop me from feelin’ it. If you are lookin’ for trouble from the likes of me, you won’t be findin’ it. But if you’re lookin’ for your name goin’ on a gravestone you’re not far from it partner."
   },
+
   "1": {
     "name": "Sophia Bushell",
     "desc": "She is a nurse that fell ill and died in her sleep. She’s well known for her hardheaded-ness and she doesn’t take too kindly to stubborn patients, yet she is the most skilled physician this town’s got!",
     "prefRespType": "rspct",
     "dialogOpts": {
-      "charm": [{"opt": "Miss, I’m sure even without you and your wonderful expertise around there’s still a way to help the sick and injured. We’re here to help", "resp": " Quit acting as if you care! I can hear the hollowness of your voice. You don’t give a SINGLE darn about what happened here…"},{"opt": "Darlin’ if we were here to tell ya what you already are, we’d have been long gone by now, little lady.", "resp": "Darlin’? DARLIN’? I'll let you know that I have worked my entire life to get to where I am, soI ain't gonna take kindly to being called a little lady."},{"opt": " Miss, you exceed your reputation, and I am impressed by your unrelenting composure, even in death.", "resp": "I do not need your empty words, even I can tell you dont care."}],
-      "stern": [{"opt": " Listen, the hospital’s gone and you are too. So it doesn’t matter anyway. I’m trying to help.", "resp": " It does matter! You travellers are all the same! You only ever care if it affects YOU."},{"opt": "Lady, we want to help, and you’re being difficult. Just let us help you.", "resp": "Lady? I'll have you know, That is spent years working to serve the sick of this town well! Don't speak to me in that tone!"},{"opt": "We’re only here to assist you. Just listen for more than 5 seconds.", "resp": "  I'll listen for 5 seconds, but I can assure you, you obviously have nothing of value to me!"}],
-      "rspct": [{"opt": "Madam, if I may be so forward, I’m sure there will be someone out there to help. If you need anything at all, we’ll be here.", "resp": " I appreciate the offer, it's been a while since I’ve seen someone even slightly concerned about what happened, and how the doctors feel about all of this! Everyone just brushes it off and tells me to move on, but this IS my livelihood! Maybe I can try and find some peace in knowing that me and you think alike..."},{"opt": "Hello there miss, If you need anything, I am always here to assist you. Would it be improper of me to ask if you can give me any details?", "resp": "Sure I can. Thank you for asking, not many ever actually want to tackle  the nitty-gritty of the situation. But to be completely honest, the details don’t really matter anymore.  I am mostly worried about whether or not anyone else is alive, but from the looks of it, I think that it is too late. Thanks for your concern. With someone like you around, I don't really have to worry about the safety of this place."},{"opt": "", "resp": "Response goes here"}]
+      "charm": [
+        {"opt": "Miss, I’m sure even without you and your wonderful expertise around there’s still a way to help the sick and injured. We’re here to help", "resp": " Quit acting as if you care! I can hear the hollowness of your voice. You don’t give a SINGLE darn about what happened here…"},
+        {"opt": "Darlin’ if we were here to tell ya what you already are, we’d have been long gone by now, little lady.", "resp": "Darlin’? DARLIN’? I'll let you know that I have worked my entire life to get to where I am, soI ain't gonna take kindly to being called a little lady."},
+        {"opt": " Miss, you exceed your reputation, and I am impressed by your unrelenting composure, even in death.", "resp": "I do not need your empty words, even I can tell you dont care."}
+      ],
+      "stern": [
+        {"opt": " Listen, the hospital’s gone and you are too. So it doesn’t matter anyway. I’m trying to help.", "resp": " It does matter! You travellers are all the same! You only ever care if it affects YOU."},
+        {"opt": "Lady, we want to help, and you’re being difficult. Just let us help you.", "resp": "Lady? I'll have you know, That is spent years working to serve the sick of this town well! Don't speak to me in that tone!"},
+        {"opt": "We’re only here to assist you. Just listen for more than 5 seconds.", "resp": "  I'll listen for 5 seconds, but I can assure you, you obviously have nothing of value to me!"}
+      ],
+      "rspct": [
+        {"opt": "Madam, if I may be so forward, I’m sure there will be someone out there to help. If you need anything at all, we’ll be here.", "resp": " I appreciate the offer, it's been a while since I’ve seen someone even slightly concerned about what happened, and how the doctors feel about all of this! Everyone just brushes it off and tells me to move on, but this IS my livelihood! Maybe I can try and find some peace in knowing that me and you think alike..."},
+        {"opt": "Hello there miss, If you need anything, I am always here to assist you. Would it be improper of me to ask if you can give me any details?", "resp": "Sure I can. Thank you for asking, not many ever actually want to tackle  the nitty-gritty of the situation. But to be completely honest, the details don’t really matter anymore.  I am mostly worried about whether or not anyone else is alive, but from the looks of it, I think that it is too late. Thanks for your concern. With someone like you around, I don't really have to worry about the safety of this place."},
+        {"opt": "I understand how frustrating it can be. You lost your place of work", "resp": "Response goes here"}
+      ]
     },
     "openingLine": "Hello there, traveller. I’m Sophia. After those bandits came in from the far end of New Texas they cleared out the hospital. I guess they thought they could make it so no one who survived  would live long after... Pardon my tone, yet I just can’t stand by doing nothing! How is anyone going to get the things they need to live? Everyone is as good as dead without that place, regardless if they survived the bandit attack or not."
   },
-  "2": {
-    "name": "name goes here",
-    "desc": "Description of personality here",
-    "prefRespType": "insert preferred response type here",
-    "dialogOpts": {
-      "charm": [{"opt": "Option goes here", "resp": "Response goes here"}],
-      "stern": [{"opt": "Option goes here", "resp": "Response goes here"}],
-      "rspct": [{"opt": "Option goes here", "resp": "Response goes here"}]
-    },
-    "openingLine": "insert opening line here"
-  }
 
+  "2": {
+    "name": "Zack",
+    "desc": "He was robbed and then shot in his own store. What a shame… But, he’s still surprisingly upbeat despite the circumstances!",
+    "prefRespType": "stern",
+    "dialogOpts": {
+      "charm": [
+        {"opt": "Option goes here", "resp": "Response goes here"},
+        {"opt": "Option goes here", "resp": "Response goes here"},
+        {"opt": "Option goes here", "resp": "Response goes here"}
+      ],
+      "stern": [
+        {"opt": "Option goes here", "resp": "Response goes here"},
+        {"opt": "Option goes here", "resp": "Response goes here"},
+        {"opt": "Option goes here", "resp": "Response goes here"}
+      ],
+      "rspct": [
+        {"opt": "Option goes here", "resp": "Response goes here"},
+        {"opt": "Option goes here", "resp": "Response goes here"},
+        {"opt": "Option goes here", "resp": "Response goes here"}
+      ]
+    },
+    "openingLine": "Well howdy-doo buckaroo? I’m Zack, and I may look dead as a doornail but the shop is always open to you gallant travelers. Any hero tryin’ to save my town is a friend of mine, You still gotta pay me though, I'm runnin’ a business here."
+  },
+
+  "3": {
+    "name": "Sheriff Curtis",
+    "desc": "Ol’ Sheriff was kidnapped and dropped off in the desert to die, rough huh?",
+    "prefRespType": "rspct",
+    "dialogOpts": {
+      "charm": [
+        {"opt": "Option goes here", "resp": "Response goes here"},
+        {"opt": "Option goes here", "resp": "Response goes here"},
+        {"opt": "Option goes here", "resp": "Response goes here"}
+      ],
+      "stern": [
+        {"opt": "Option goes here", "resp": "Response goes here"},
+        {"opt": "Option goes here", "resp": "Response goes here"},
+        {"opt": "Option goes here", "resp": "Response goes here"}
+      ],
+      "rspct": [
+        {"opt": "Option goes here", "resp": "Response goes here"},
+        {"opt": "Option goes here", "resp": "Response goes here"},
+        {"opt": "Option goes here", "resp": "Response goes here"}
+      ]
+    },
+    "openingLine": "So you’re one of the ‘heroes’ I’ve been told about huh. Don’t look very heroic to me. I’m the Sheriff ‘round here, and I say that we can handle ourselves. For now. But if you’re needin’ something to do, I’m lookin’ for my dog Bailey. you see him anywhere just holler."
+  },
+
+  "4": {
+    "name": "Sally Earnest",
+    "desc": "Poisoned in her own bar! Just the thought gives me goosebumps! If that was me, I don't even KNOW how I would feel about such a harsh way to go",
+    "prefRespType": "stern",
+    "dialogOpts": {
+      "charm": [
+        {"opt": "Option goes here", "resp": "Response goes here"},
+        {"opt": "Option goes here", "resp": "Response goes here"},
+        {"opt": "Option goes here", "resp": "Response goes here"}
+      ],
+      "stern": [
+        {"opt": "Option goes here", "resp": "Response goes here"},
+        {"opt": "Option goes here", "resp": "Response goes here"},
+        {"opt": "Option goes here", "resp": "Response goes here"}
+      ],
+      "rspct": [
+        {"opt": "Option goes here", "resp": "Response goes here"},
+        {"opt": "Option goes here", "resp": "Response goes here"},
+        {"opt": "Option goes here", "resp": "Response goes here"}
+      ]
+    },
+    "openingLine": "Hey there. Everyone around these parts call me Sally, Used to be the bartender. But I don’t reckon y’all want a drink. You guys seem to know what you’re doin’ so just keep at it.”"
+  },
+
+  "5": {
+    "name": "Ally O’malley",
+    "desc": "She was a fearless horse racer, spoken good of all around for her unmatched skill! That was, until she got trampled by a bandit’s horse during a large robbery of the town.",
+    "prefRespType": "rspct",
+    "dialogOpts": {
+      "charm": [
+        {"opt": "Option goes here", "resp": "Response goes here"},
+        {"opt": "Option goes here", "resp": "Response goes here"},
+        {"opt": "Option goes here", "resp": "Response goes here"}
+      ],
+      "stern": [
+        {"opt": "Option goes here", "resp": "Response goes here"},
+        {"opt": "Option goes here", "resp": "Response goes here"},
+        {"opt": "Option goes here", "resp": "Response goes here"}
+      ],
+      "rspct": [
+        {"opt": "Option goes here", "resp": "Response goes here"},
+        {"opt": "Option goes here", "resp": "Response goes here"},
+        {"opt": "Option goes here", "resp": "Response goes here"}
+      ]
+    },
+    "openingLine": "Well good golly! You must be one of the heroes everyone’s going on about. Too bad, you won’t win over my praise without some pints and dinner first!”"
+  },
+
+  "6": {
+    "name": "Albert Stanagan",
+    "desc": "Albert was in his shop when the bandits came in just to rob him, but saw the knife in his hands and shot him instead.",
+    "prefRespType": "charm",
+    "dialogOpts": {
+      "charm": [
+        {"opt": "Option goes here", "resp": "Response goes here"},
+        {"opt": "Option goes here", "resp": "Response goes here"},
+        {"opt": "Option goes here", "resp": "Response goes here"}
+      ],
+      "stern": [
+        {"opt": "Option goes here", "resp": "Response goes here"},
+        {"opt": "Option goes here", "resp": "Response goes here"},
+        {"opt": "Option goes here", "resp": "Response goes here"}
+      ],
+      "rspct": [
+        {"opt": "Option goes here", "resp": "Response goes here"},
+        {"opt": "Option goes here", "resp": "Response goes here"},
+        {"opt": "Option goes here", "resp": "Response goes here"}
+      ]
+    },
+    "openingLine": "Oh hey, I’m Albert. The butcher..You guys are here to help us..? Wow..thanks..maybe you could be my friend too..I don’t have many of those..I sure could use some cheering up lately.."
+  },
+
+  "7": {
+    "name": "Arthur Demens",
+    "desc": "Poor guy got shot in the chest. He returned to his hometown, Devil’s Edge, just to see that everyone in town is dead. Arthur tried to hold off the remaining bandits as best he can with his pistol, but there were just too many. A valiant effort nonetheless!",
+    "prefRespType": "stern",
+    "dialogOpts": {
+      "charm": [
+        {"opt": "Option goes here", "resp": "Response goes here"},
+        {"opt": "Option goes here", "resp": "Response goes here"},
+        {"opt": "Option goes here", "resp": "Response goes here"}
+      ],
+      "stern": [
+        {"opt": "Option goes here", "resp": "Response goes here"},
+        {"opt": "Option goes here", "resp": "Response goes here"},
+        {"opt": "Option goes here", "resp": "Response goes here"}
+      ],
+      "rspct": [
+        {"opt": "Option goes here", "resp": "Response goes here"},
+        {"opt": "Option goes here", "resp": "Response goes here"},
+        {"opt": "Option goes here", "resp": "Response goes here"}
+      ]
+    },
+    "openingLine": "You guys seem a little unsure of yourselves..Well anywho..I used to work on the railroad, but now the railroad is only halfway finished because of those bandits. Maybe after you’re done helpin’ us you can fix it."
+  },
+
+  "8": {
+    "name": "Bailey",
+    "desc": "Awwwwwww, look at the good ol’ pupper! He’s been here for a long while. He passed naturally, thank goodness, a few years back. The sheriff still thinks he's alive out there somewhere though…",
+    "prefRespType": "charm",
+    "dialogOpts": {
+      "charm": [
+        {"opt": "Option goes here", "resp": "Response goes here"},
+        {"opt": "Option goes here", "resp": "Response goes here"},
+        {"opt": "Option goes here", "resp": "Response goes here"}
+      ],
+      "stern": [
+        {"opt": "Option goes here", "resp": "Response goes here"},
+        {"opt": "Option goes here", "resp": "Response goes here"},
+        {"opt": "Option goes here", "resp": "Response goes here"}
+      ],
+      "rspct": [
+        {"opt": "Option goes here", "resp": "Response goes here"},
+        {"opt": "Option goes here", "resp": "Response goes here"},
+        {"opt": "Option goes here", "resp": "Response goes here"}
+      ]
+    },
+    "openingLine": " \"Bark! Bark! Woof woof!\" (‘Nice to see you!! Have you guys seen the sheriff around?’)"
+  },
+
+  "9": {
+    "name": "Callie Brount",
+    "desc": "Ol’ Callie Was this town's first, and best female photographer… Was a shame she got shot while trying to get a shot of the cliff over yonder...",
+    "prefRespType": "charm",
+    "dialogOpts": {
+      "charm": [
+        {"opt": "Option goes here", "resp": "Response goes here"},
+        {"opt": "Option goes here", "resp": "Response goes here"},
+        {"opt": "Option goes here", "resp": "Response goes here"}
+      ],
+      "stern": [
+        {"opt": "Option goes here", "resp": "Response goes here"},
+        {"opt": "Option goes here", "resp": "Response goes here"},
+        {"opt": "Option goes here", "resp": "Response goes here"}
+      ],
+      "rspct": [
+        {"opt": "Option goes here", "resp": "Response goes here"},
+        {"opt": "Option goes here", "resp": "Response goes here"},
+        {"opt": "Option goes here", "resp": "Response goes here"}
+      ]
+    },
+    "openingLine": "Hey there partner! You sure are a mighty photogenic person! Back in my day I took all the pictures around Devil’s edge, first female photographer in this side of the west! Maybe I should get a picture of you sometime!"
+  },
+
+  "10": {
+    "name": "Lenny Tarson",
+    "desc": "Lenny was was robbed then thrown out of his bank and died of a heart attack. He’s a tough ol’ guy.",
+    "prefRespType": "rspct",
+    "dialogOpts": {
+      "charm": [
+        {"opt": "Option goes here", "resp": "Response goes here"},
+        {"opt": "Option goes here", "resp": "Response goes here"},
+        {"opt": "Option goes here", "resp": "Response goes here"}
+      ],
+      "stern": [
+        {"opt": "Option goes here", "resp": "Response goes here"},
+        {"opt": "Option goes here", "resp": "Response goes here"},
+        {"opt": "Option goes here", "resp": "Response goes here"}
+      ],
+      "rspct": [
+        {"opt": "Option goes here", "resp": "Response goes here"},
+        {"opt": "Option goes here", "resp": "Response goes here"},
+        {"opt": "Option goes here", "resp": "Response goes here"}
+      ]
+    },
+    "openingLine": "Hi. I’m Lenny. Those darned bandits thought throwin’ me outta my own bank would stop me huh. Well, if it weren’t for my failed heart I’d show ‘em what they deserved.  Just to tell you, I don’t really trust you guys all too well. But if you somehow find a way to win my approval, I’ll be impressed."
+  },
+  "11": {
+    "name": "Darlene Smith",
+    "desc": "Darlene Was thrown off the side of her carriage and died in the desert from dehydration, but she’s still the toughest gal in the ol’ west.",
+    "prefRespType": "stern",
+    "dialogOpts": {
+      "charm": [
+        {"opt": "Option goes here", "resp": "Response goes here"},
+        {"opt": "Option goes here", "resp": "Response goes here"},
+        {"opt": "Option goes here", "resp": "Response goes here"}
+      ],
+      "stern": [
+        {"opt": "Option goes here", "resp": "Response goes here"},
+        {"opt": "Option goes here", "resp": "Response goes here"},
+        {"opt": "Option goes here", "resp": "Response goes here"}
+      ],
+      "rspct": [
+        {"opt": "Option goes here", "resp": "Response goes here"},
+        {"opt": "Option goes here", "resp": "Response goes here"},
+        {"opt": "Option goes here", "resp": "Response goes here"}
+      ]
+    },
+    "openingLine": "Afternoon. The name’s Darlene. After those darned bandits came in through here and knocked my ol’ wagon loose these people haven’t been the same since. I sure hope y’all can be serious about this matter and help out."
+  },
+
+  "12": {
+    "name": "Jerrence Terrence",
+    "desc": "These bandits really don’t know the first rule of a fair fight. He tried to stop the bandits in the town and was shot several times. Must say, that warrior spirit of his is mighty admirable.",
+    "prefRespType": "charm",
+    "dialogOpts": {
+      "charm": [
+        {"opt": "Option goes here", "resp": "Response goes here"},
+        {"opt": "Option goes here", "resp": "Response goes here"},
+        {"opt": "Option goes here", "resp": "Response goes here"}
+      ],
+      "stern": [
+        {"opt": "Option goes here", "resp": "Response goes here"},
+        {"opt": "Option goes here", "resp": "Response goes here"},
+        {"opt": "Option goes here", "resp": "Response goes here"}
+      ],
+      "rspct": [
+        {"opt": "Option goes here", "resp": "Response goes here"},
+        {"opt": "Option goes here", "resp": "Response goes here"},
+        {"opt": "Option goes here", "resp": "Response goes here"}
+      ]
+    },
+    "openingLine": "Well HOWDY howdy. I’m Jerrence Terrence but you can call me Jerry-Terry. I used to herd the cattle ‘round the back end of the cliff, man I sure hope y’all can help out, I’d surely be surprised at that. I got hope for ya!"
+  },
+
+  "13": {
+    "name": "Mr. Sheldon Robust",
+    "desc": "Nothin’ too special about this one. He died of old age.",
+    "prefRespType": "respect",
+    "dialogOpts": {
+      "charm": [
+        {"opt": "Option goes here", "resp": "Response goes here"},
+        {"opt": "Option goes here", "resp": "Response goes here"},
+        {"opt": "Option goes here", "resp": "Response goes here"}
+      ],
+      "stern": [
+        {"opt": "Option goes here", "resp": "Response goes here"},
+        {"opt": "Option goes here", "resp": "Response goes here"},
+        {"opt": "Option goes here", "resp": "Response goes here"}
+      ],
+      "rspct": [
+        {"opt": "Option goes here", "resp": "Response goes here"},
+        {"opt": "Option goes here", "resp": "Response goes here"},
+        {"opt": "Option goes here", "resp": "Response goes here"}
+      ]
+    },
+    "openingLine": " Hello there, It’s nice to see such youngsters like you come around here and help out us old folks, even if some of the younger town’s people like Callie and Arthur have old souls. I used to be the town’s barber too, so if you ever need a trim off the top you know where to find me. As long as you do all you can we’ll be appreciative."
+  },
+
+  "14": {
+    "name": "Charlene and Daryl",
+    "desc": "Charlene and Daryl worked in the town calmly and quietly until the attack. They were robbed and then killed in their once humble abode. Tragic ain’t it?",
+    "prefRespType": "rspct",
+    "dialogOpts": {
+      "charm": [
+        {"opt": "Option goes here", "resp": "Response goes here"},
+        {"opt": "Option goes here", "resp": "Response goes here"},
+        {"opt": "Option goes here", "resp": "Response goes here"}
+      ],
+      "stern": [
+        {"opt": "Option goes here", "resp": "Response goes here"},
+        {"opt": "Option goes here", "resp": "Response goes here"},
+        {"opt": "Option goes here", "resp": "Response goes here"}
+      ],
+      "rspct": [
+        {"opt": "Option goes here", "resp": "Response goes here"},
+        {"opt": "Option goes here", "resp": "Response goes here"},
+        {"opt": "Option goes here", "resp": "Response goes here"}
+      ]
+    },
+    "openingLine": " Howdy, I’m Daryl, and this is my wife Charlene, she’s as sweet as cherry but she’s as deaf as a newborn. We sure hope you can help us out, we just want to be at peace again, just me and my Charlene."
+  }
 }
