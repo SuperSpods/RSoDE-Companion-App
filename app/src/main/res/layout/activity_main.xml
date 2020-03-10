@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -9,6 +10,7 @@
     <!-- The primary full-screen view. This can be replaced with whatever view
          is needed to present your content, e.g. VideoView, SurfaceView,
          TextureView, etc. -->
+
     <TextView
         android:id="@+id/fullscreen_content"
         android:layout_width="match_parent"
@@ -22,12 +24,14 @@
 
     <!-- This FrameLayout insets its children based on system windows using
          android:fitsSystemWindows. -->
+
     <FrameLayout
         android:id="@+id/dialogueMainBox"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fitsSystemWindows="true"
-        android:visibility="invisible">
+        android:visibility="visible"
+        tools:visibility="invisible">
 
         <LinearLayout
             android:id="@+id/topBar"
@@ -37,18 +41,20 @@
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/textView"
-                android:layout_width="wrap_content"
+                android:id="@+id/nameBox"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="charName"
-                android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+                android:fontFamily="@font/ewert"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textSize="24sp" />
 
             <Button
                 android:id="@+id/info"
+                style="@android:style/Widget.Button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="info" />
+                android:text="@string/infoButton" />
         </LinearLayout>
 
         <LinearLayout
@@ -58,25 +64,47 @@
             android:gravity="bottom"
             android:orientation="vertical">
 
-            <Button
-                android:id="@+id/dialogue1"
+            <TextView
+                android:id="@+id/opening"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Option 1" />
+                android:fontFamily="sans-serif"
+                android:textSize="18sp" />
+
+            <Button
+                android:id="@+id/dialogue1"
+                style="@android:style/Widget.Button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAllCaps="false" />
 
             <Button
                 android:id="@+id/dialogue2"
+                style="@android:style/Widget.Button"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Option 2" />
+                android:layout_height="wrap_content" />
 
             <Button
                 android:id="@+id/dialogue3"
+                style="@android:style/Widget.Button"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Option 3" />
+                android:layout_height="wrap_content" />
 
         </LinearLayout>
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/IdleScreenBox"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="invisible">
+
+        <ImageView
+            android:id="@+id/idleNfcCircle"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:contentDescription="NFC circle marker"
+            app:srcCompat="@drawable/nfc_circle" />
     </FrameLayout>
 
 </FrameLayout>

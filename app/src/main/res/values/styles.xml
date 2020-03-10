@@ -19,4 +19,7 @@
     <style name="FullscreenActionBarStyle" parent="Widget.AppCompat.ActionBar">
         <item name="android:background">@color/black_overlay</item>
     </style>
+    <style name="InfoButtonStyle" parent="android:Widget.Button">
+        <item name="android:buttonTint">@color/colorPrimary</item>
+    </style>
 </resources>
